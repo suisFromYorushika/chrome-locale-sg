@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Locale SG",
+  "version": "0.2.0",
+  "description": "默认在所有普通网站使用 zh-SG、en-US；自动启动，图标显示生效状态，保留系统时区。",
+  "minimum_chrome_version": "119",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Chrome Locale SG · 等待当前网页检测",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/idle-16.png",
+      "32": "icons/idle-32.png"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"
+  },
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "icons/base-16.png",
+    "32": "icons/base-32.png",
+    "48": "icons/base-48.png",
+    "128": "icons/base-128.png"
+  }
+}

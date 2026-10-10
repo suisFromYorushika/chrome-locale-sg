@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-SG">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chrome Locale SG</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header><div><h1>Chrome Locale SG</h1><p>新加坡中文 · 全站自动生效</p></div>
+<label class="toggle"><input id="enabled" type="checkbox"><span id="enabled-label">启用</span></label></header>
+<div id="notice" role="status" aria-live="polite">正在读取真实状态…</div>
+<form id="settings-form">
+<div class="row"><label>首选语言<input id="primary" value="zh-SG" spellcheck="false" required></label>
+<label>后备语言<input id="fallbacks" value="en-US" spellcheck="false" placeholder="以逗号分隔，可留空"></label></div>
+<p id="timing" class="hint"></p>
+<details><summary>网站范围与授权 <span id="permissions-summary"></span></summary>
+<p class="hint">域名包含子域名；每行一个，不填端口或路径。每个 iframe 按自己的域名判断，不继承顶层网站的排除项。</p>
+<div class="row"><label>启用网站<textarea id="include" rows="3" placeholder="留空 = 所有普通网站"></textarea></label>
+<label>排除网站<textarea id="exclude" rows="3" placeholder="例如 example.com"></textarea></label></div>
+<div class="buttons wrap"><button type="button" id="grant-current">恢复当前网站访问</button><button type="button" id="grant-list">恢复列表网站访问</button></div>
+<button type="button" id="grant-all" class="wide secondary">恢复所有 HTTP / HTTPS 网站访问</button>
+<p class="hint">默认已启用且覆盖所有 HTTP / HTTPS 网站，无需逐站授权。只有被 Chrome 限制访问时才需要恢复权限。</p>
+</details>
+<button type="submit" class="primary wide" id="save">保存并应用</button>
+</form>
+<section aria-labelledby="live-title"><div class="section-head"><h2 id="live-title">当前网页 · 实时检测</h2><button id="probe" type="button" class="link">重新检测</button></div>
+<p id="page" class="hint ellipsis"></p>
+<dl id="values"><dt>语言</dt><dd id="v-language">—</dd><dt>语言列表</dt><dd id="v-languages">—</dd>
+<dt>日期 Locale</dt><dd id="v-date">—</dd><dt>数字 Locale</dt><dd id="v-number">—</dd>
+<dt>系统时区</dt><dd id="v-zone">—</dd><dt>请求头规则</dt><dd id="v-header">—</dd></dl>
+<p id="diagnostics" class="hint"></p><p class="hint status-key">图标：绿灯「开」已核对 · 黄灯待检测/授权 · 灰灯「关」已关闭 · 红灯「!」异常</p><button id="refresh" type="button" class="wide">刷新当前网页</button>
+</section>
+<footer>不更改 GPS、User-Agent 或系统设置。不联网、不采集。<br>设置变化后建议刷新；已有格式化对象与缓存结果不会重算。</footer>
+<script src="popup.js" type="module"></script>
+</body></html>
